@@ -1,23 +1,27 @@
+# SPDX-FileCopyrightText: 2025 Famedly GmbH (info@famedly.com)
+#
+# SPDX-License-Identifier: Apache-2.0
+
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
-    hooks:
-    -   id: check-byte-order-marker
-    -   id: check-case-conflict
-    -   id: check-merge-conflict
-    -   id: check-symlinks
-    -   id: check-yaml
-    -   id: check-toml
-    -   id: check-json
-    -   id: end-of-file-fixer
-    -   id: mixed-line-ending
-    -   id: trailing-whitespace
--   repo: git@github.com:famedly/backend-pre-commit-templates.git
-    rev: 548bf6ae934623c72e2e5f90e095b45259b6f4ba
-    hooks:
-    -   id: fmt
-    -   id: clippy
--   repo: https://github.com/crate-ci/typos
-    rev: v1.23.5
-    hooks:
-    -   id: typos
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v6.0.0
+      hooks:
+          - id: fix-byte-order-marker
+          - id: check-case-conflict
+          - id: check-merge-conflict
+          - id: check-symlinks
+          - id: check-yaml
+          - id: check-toml
+          - id: check-json
+          - id: end-of-file-fixer
+          - id: mixed-line-ending
+          - id: trailing-whitespace
+    - repo: git@github.com:famedly/backend-pre-commit-templates.git
+      rev: 123eb7487cf81a3d2ac036f73a084a41b3df54d9
+      hooks:
+          - id: fmt
+          - id: clippy
+    - repo: https://github.com/crate-ci/typos
+      rev: v1
+      hooks:
+          - id: typos

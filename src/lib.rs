@@ -1,17 +1,28 @@
-//! TODO: crate documentation
+// SPDX-FileCopyrightText: 2025 Famedly GmbH (info@famedly.com)
+//
+// SPDX-License-Identifier: Apache-2.0
 
-use snafu::Snafu;
+//! Workaround for <https://github.com/tokio-rs/tracing/issues/2082>
 
-/// Library Template error
-#[derive(Debug, Snafu)]
-pub enum ExampleLibraryError {
-	/// Could not find the world to say hello to
-	WorldNotFound,
-}
+use proc_macro::TokenStream;
 
-/// Write a hello world message
-#[allow(clippy::print_stdout)]
-pub fn hello_world() -> Result<(), ExampleLibraryError> {
-	println!("Hello, world!");
-	Ok(())
+/// A dummy implementation of the [`tracing::instrument`] proc macro
+/// This should be used as a replacement for the [`tracing::instrument`] proc
+/// macro when the code coverage is needed.
+///
+/// # Example
+/// ```ignore
+/// #[cfg(not(coverage))]
+/// pub use tracing::instrument;
+/// #[cfg(coverage)]
+/// pub use tracing_instrument_mock::instrument;
+///
+/// #[instrument]
+/// fn my_function() {
+/// 	println!("Hello, world!");
+/// }
+/// ```
+#[proc_macro_attribute]
+pub fn instrument(_args: TokenStream, item: TokenStream) -> TokenStream {
+	item
 }

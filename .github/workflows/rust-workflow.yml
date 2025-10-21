@@ -1,12 +1,16 @@
+# SPDX-FileCopyrightText: 2025 Famedly GmbH (info@famedly.com)
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: Rust
 
 # Trigger the CI on any tags, pushes to any branch and PRs to any branch.
 on:
   push:
-    branches: [ "main" ]
-    tags: [ "*" ]
+    branches: ["main"]
+    tags: ["*"]
   pull_request:
-    branches: [ "*" ]
+    branches: ["*"]
 
 # Make sure there is no pipeline running uselessly.
 concurrency:
@@ -22,6 +26,8 @@ jobs:
   rust:
     uses: famedly/backend-build-workflows/.github/workflows/rust-workflow.yml@v4
     secrets: inherit
+    with:
+      testcov_args: "--no-tests pass"
   publish:
     needs: rust
     uses: famedly/backend-build-workflows/.github/workflows/publish-crate.yml@v4
@@ -29,4 +35,4 @@ jobs:
     with:
       crate_registry_name: "famedly"
       crate_registry_index_url: "${{ vars.CARGO_REGISTRIES_FAMEDLY_INDEX }}"
-      packages: "example-library"
+      packages: "tracing-instrument-mock"

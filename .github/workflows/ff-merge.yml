@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Famedly GmbH (info@famedly.com)
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: fast-forward
 on:
   issue_comment:
@@ -6,7 +10,7 @@ jobs:
   fast-forward:
     # Only run if the comment contains the /fast-forward or command.
     if: ${{ contains(github.event.comment.body, '/fast-forward')
-            && github.event.issue.pull_request }}
+      && github.event.issue.pull_request }}
     runs-on: ubuntu-latest
 
     permissions:

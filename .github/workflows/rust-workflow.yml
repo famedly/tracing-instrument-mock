@@ -31,8 +31,10 @@ jobs:
   publish:
     needs: rust
     uses: famedly/backend-build-workflows/.github/workflows/publish-crate.yml@v4
-    secrets: inherit
+    secrets:
+      CRATE_REGISTRY_SSH_PRIVKEY: ${{ secrets.CI_SSH_PRIVATE_KEY }}
+      CRATE_REGISTRY_AUTH_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
     with:
-      crate_registry_name: "famedly"
-      crate_registry_index_url: "${{ vars.CARGO_REGISTRIES_FAMEDLY_INDEX }}"
+      crate_registry_name: "crates-io"
+      crate_registry_index_url: "https://github.com/rust-lang/crates.io-index"
       packages: "tracing-instrument-mock"

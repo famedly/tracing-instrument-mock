@@ -35,6 +35,4 @@ jobs:
       CRATE_REGISTRY_SSH_PRIVKEY: ${{ secrets.CI_SSH_PRIVATE_KEY }}
       CRATE_REGISTRY_AUTH_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
     with:
-      crate_registry_name: "crates-io"
-      crate_registry_index_url: "https://github.com/rust-lang/crates.io-index"
       packages: "tracing-instrument-mock"

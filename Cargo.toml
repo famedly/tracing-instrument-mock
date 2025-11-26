@@ -9,7 +9,6 @@ authors = []
 edition = "2024"
 resolver = "2"
 license = "Apache-2.0"
-publish = ["famedly"]
 
 [lib]
 proc-macro = true

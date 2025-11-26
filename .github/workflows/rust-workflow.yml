@@ -24,13 +24,13 @@ env:
 # Defined CI jobs.
 jobs:
   rust:
-    uses: famedly/backend-build-workflows/.github/workflows/rust-workflow.yml@v4
+    uses: famedly/backend-build-workflows/.github/workflows/rust-workflow.yml@v5
     secrets: inherit
     with:
       testcov_args: "--no-tests pass"
   publish:
     needs: rust
-    uses: famedly/backend-build-workflows/.github/workflows/publish-crate.yml@v4
+    uses: famedly/backend-build-workflows/.github/workflows/publish-crate.yml@v5
     secrets:
       CRATE_REGISTRY_SSH_PRIVKEY: ${{ secrets.CI_SSH_PRIVATE_KEY }}
       CRATE_REGISTRY_AUTH_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}

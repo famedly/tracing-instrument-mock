@@ -9,6 +9,11 @@ authors = []
 edition = "2024"
 resolver = "2"
 license = "Apache-2.0"
+repository = "https://github.com/famedly/tracing-instrument-mock"
+documentation = "https://docs.rs/tracing-instrument-mock"
+description = "A mock of the `tracing::instrument` proc macro that does nothing and can replace the `tracing::instrument` macro when running with code coverage enabled."
+readme = "README.md"
+
 
 [lib]
 proc-macro = true
